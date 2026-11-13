@@ -1,6 +1,8 @@
 # Geoff
 
-A talking tarot skeleton for a Halloween party. A microphone hears the table, Deepgram transcribes it, Claude decides what Geoff says, and ElevenLabs speaks it through a speaker hidden behind him. Two LEDs in his eye sockets flicker with his voice. It runs on a Raspberry Pi 4.
+Disclaimer: Geoff is my first vibe-coded project, created two weeks on a whim for a Halloween party. It is fun and unserious but I hope you enjoy it. 
+
+Geoff is a talking tarot skeleton for a Halloween party. A microphone hears the table, Deepgram transcribes it, Claude decides what Geoff says, and ElevenLabs speaks it through a speaker hidden behind him. Two LEDs in his eye sockets flicker with his voice. It runs on a Raspberry Pi 4.
 
 Two modes:
 - **Idle:** Geoff sits at the party, listening. He answers when someone says his name, and every few minutes makes a dry remark of his own.
