@@ -1,0 +1,67 @@
+# Copy this file to config.toml and fill in the keys.
+# Keep config.toml private: it holds your API keys.
+
+[anthropic]
+api_key = ""                    # from console.anthropic.com
+model = "claude-sonnet-5-5"     # "claude-haiku-5-5" is quicker but blander
+# Thinking before answering slows Geoff down. Leave these out to use
+# the defaults: thinking off where the model allows it, and effort "low".
+# thinking = "between_tools"    # Sonnet 5.5; "disabled" for Haiku 5.5
+# effort = "low"                # readings
+# idle_effort = "low"           # between readings
+workspace_id = ""               # only for organisation-level keys: the workspace ID (wrkspc_...)
+
+[deepgram]
+api_key = ""                    # from console.deepgram.com
+model = "nova-3"
+language = "en"                 # you can try "en-GB"
+utterance_end_ms = 1500         # pause (ms) that counts as "finished speaking"
+card_wait_seconds = 4           # after "card two" with no card name, wait this long for the rest
+setup_wait_seconds = 1.5        # before the first card, wait for this much silence before he replies
+
+[elevenlabs]
+api_key = ""                    # from elevenlabs.io, Profile > API keys
+voice_id = ""                   # copy from the voice's page in My Voices
+model_id = "eleven_flash_v2_5"  # fastest. "eleven_v4" sounds better but is slower
+
+# Delete this whole section to use the voice's own settings.
+# eleven_v4 doesn't support speed or style.
+[elevenlabs.voice_settings]
+stability = 0.5
+similarity_boost = 0.75
+style = 0.2
+speed = 1.0
+
+[audio]
+input_device = ""     # blank = default. Otherwise part of the name, e.g. "USB"
+output_device = ""    # run: python geoff.py --list-devices
+tail_seconds = 0.8    # keep the mic closed this long after Geoff stops. Raise to 1.2 for Bluetooth
+# mixer_card = "GoMic"   # ALSA card for the phone page's mic level buttons
+# mixer_control = "Mic"
+
+[controls]
+mute_key = "page_down"   # the clicker's "next" button
+mode_key = "page_up"     # the clicker's "back" button
+start_muted = false      # true = he starts with the mic off until you unmute him
+followup_seconds = 10    # after Geoff answers someone, a reply starting within this long goes to him without his name
+followup_turns = 3       # how many unnamed replies in a row, before his name is needed again
+
+[idle]
+enabled = true
+remark_min_seconds = 120         # time between remarks of his own...
+remark_max_seconds = 900         # ...picked at random between these (2 to 15 minutes)
+remark_after_spoke_seconds = 60  # if he's just been talking, wait this long before a remark
+reply_when_named_after_seconds = 1   # if someone talks to him, he answers once he has been quiet this long
+shush_seconds = 900              # "Geoff, shush" stops remarks of his own for this long
+after_reading_seconds = 120      # after a reading, back to idle if he hasn't spoken for this long
+min_new_words = 12               # no remark if the room has been near silent since the last one
+window_seconds = 180             # how much recent chatter he gets when someone talks to him
+notes_seconds = 180              # how often the party notes are updated
+
+# Optional: Geoff works the same without this section.
+[eyes]
+enabled = true        # LED eyes on GPIO17 (pin 11) and GPIO27 (pin 13); off when silent
+loudness = 3000       # lower = brighter for quieter speech; raise if they sit at full brightness
+
+[web]
+port = 8080

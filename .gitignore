@@ -1,0 +1,9 @@
+# Holds API keys
+config.toml
+
+# Personal notes on real people; never commit
+prompts/guests.md
+
+.venv/
+__pycache__/
+*.pyc
